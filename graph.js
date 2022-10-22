@@ -1,3 +1,7 @@
+/**
+ * https://www.30secondsofcode.org/articles/s/js-data-structures-graph
+ * @description A graph is a data structure consisting of a set of nodes or vertices and a set of edges that represent connections between those nodes
+ */
 class Graph {
     constructor(directed = false) {
         this.nodes = []

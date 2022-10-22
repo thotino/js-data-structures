@@ -33,13 +33,13 @@ class Tree {
         }
     }
 
-    *postOrderTraversal(node = this.root) {
-        yield node
+    *postOrderTraversal(node = this.root) {        
         if (node.hasChildren()) {
             for (const child of node.children) {
                 yield* this.postOrderTraversal(child)
             }
         }
+        yield node
     }
 
     insert(parentKey, key, value) {

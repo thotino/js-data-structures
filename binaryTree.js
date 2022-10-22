@@ -1,3 +1,7 @@
+/**
+ * https://www.30secondsofcode.org/articles/s/js-data-structures-binary-tree
+ * @description A binary tree is a data structure consisting of a set of linked nodes that represent a hierarchical tree structure.
+ */
 class BinaryTreeNode {
     constructor(key, value = key, parent = null, left = null, right = null) {
         this.key = key
