@@ -12,7 +12,7 @@ class BinaryTreeNode {
     }
 
     get isLeaf() {
-        return (this.left && this.left.length === 0) && (this.right && this.right.length === 0)
+        return (!this.left) && (!this.right)
     }
     get hasChildren() {
         return !this.isLeaf
