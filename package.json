@@ -4,5 +4,12 @@
   "main": "index.js",
   "repository": "git@github.com:thotino/js-data-structures.git",
   "author": "Thotino GOBIN-GANSOU <gthomario@yahoo.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "test": "jest --coverage --verbose --detectOpenHandles"
+  },
+  "devDependencies": {
+    "jest": "^29.3.1",
+    "standard": "^17.0.0"
+  }
 }
