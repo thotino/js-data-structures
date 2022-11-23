@@ -1,0 +1,8 @@
+{
+  "name": "data-structures",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:thotino/js-data-structures.git",
+  "author": "Thotino GOBIN-GANSOU <gthomario@yahoo.com>",
+  "license": "MIT"
+}
