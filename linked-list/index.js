@@ -1,5 +1,5 @@
 /**
- * https://www.30secondsofcode.org/articles/s/js-data-structures-linked-list
+ * @see https://www.30secondsofcode.org/articles/s/js-data-structures-linked-list
  * @description
  * A linked list is a linear data structure that represents a collection of elements, where each element points to the next one.
  * The first element in the linked list is the head and the last element is the tail.
@@ -64,3 +64,5 @@ class LinkedList {
     yield * this.nodes
   }
 }
+
+module.exports = { LinkedList }
