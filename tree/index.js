@@ -1,5 +1,5 @@
 /**
- * https://www.30secondsofcode.org/articles/s/js-data-structures-tree
+ * @see https://www.30secondsofcode.org/articles/s/js-data-structures-tree
  * @description A tree is a data structure consisting of a set of linked nodes that represent a hierarchical tree structure.
  */
 class TreeNode {
@@ -10,12 +10,12 @@ class TreeNode {
     this.children = []
   }
 
-  get isLeave () {
+  get isLeaf () {
     return this.children.length === 0
   }
 
   get hasChildren () {
-    return !this.isLeave()
+    return !this.isLeaf
   }
 }
 
@@ -26,7 +26,7 @@ class Tree {
 
   * preOrderTraversal (node = this.root) {
     yield node
-    if (node.hasChildren()) {
+    if (node.hasChildren) {
       for (const child of node.children) {
         yield * this.preOrderTraversal(child)
       }
@@ -34,7 +34,7 @@ class Tree {
   }
 
   * postOrderTraversal (node = this.root) {
-    if (node.hasChildren()) {
+    if (node.hasChildren) {
       for (const child of node.children) {
         yield * this.postOrderTraversal(child)
       }
@@ -55,12 +55,12 @@ class Tree {
 
   remove (key) {
     for (const node of this.postOrderTraversal()) {
-      if (node.key === key) {
-        const parent = node.parent
-        const newChildren = parent.children.filter(({ key: curKey }) => (curkey !== key))
-        parent.children = newChildren
-        return true
+      const filtered = node.children.filter(child => (child.key !== key))
+      if (filtered.length !== node.children.length) {
+        node.children = filtered
+      return true 
       }
+      
     }
     return false
   }
@@ -69,3 +69,5 @@ class Tree {
     return [...this.preOrderTraversal()].find(({ key: curKey }) => (curKey === key))
   }
 }
+
+module.exports = { Tree }
