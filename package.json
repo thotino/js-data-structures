@@ -6,7 +6,8 @@
   "author": "Thotino GOBIN-GANSOU <gthomario@yahoo.com>",
   "license": "MIT",
   "scripts": {
-    "test": "jest --coverage --verbose --detectOpenHandles"
+    "test": "jest --coverage --verbose --detectOpenHandles",
+    "standard": "standard"
   },
   "devDependencies": {
     "jest": "^29.3.1",
