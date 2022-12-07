@@ -1,9 +1,10 @@
 /**
- * https://www.30secondsofcode.org/articles/s/js-data-structures-graph
+ * @see https://www.30secondsofcode.org/articles/s/js-data-structures-graph
  * @description A graph is a data structure consisting of a set of nodes or vertices and a set of edges that represent connections between those nodes
  */
+
 class Graph {
-    constructor(directed = false) {
+    constructor(directed = true) {
         this.nodes = []
         this.edges = new Map()
         this.directed = directed
@@ -14,23 +15,26 @@ class Graph {
     }
 
     addEdge(startingNode, targetNode, weight = 0) {
-        const key = JSON.stringify({ startingNode, targetNode })
+        let key = JSON.stringify({ startingNode, targetNode })
         this.edges.set(key, { startingNode, targetNode, weight })
+        if (!this.directed) {            
+            key = JSON.stringify({ startingNode: targetNode, targetNode: startingNode })
+            this.edges.set(key, { startingNode: targetNode, targetNode: startingNode, weight })
+        }
     }
 
     removeNode(key) {
-        this.nodes = this.nodes.filter(({ key: curKey }) => (curKey !== key))
-
         [...this.edges.values()].forEach(({ startingNode, targetNode, weight = 0 }) => {
-            if (startingNode.key === key || targetNode.key === key) {
+            if (startingNode === key || targetNode === key) {
                 this.edges.delete(JSON.stringify({ startingNode, targetNode }))
             }
         })
+        this.nodes = this.nodes.filter(({ key: curKey }) => (curKey !== key))
     }
 
     removeEdge(startingNodeKey, targetNodeKey) {
         [...this.edges.values()].forEach(({ startingNode, targetNode, weight = 0 }) => {
-            if (startingNode.key === startingNodeKey && targetNode.key === targetNodeKey) {
+            if (startingNode === startingNodeKey && targetNode === targetNodeKey) {
                 this.edges.delete(JSON.stringify({ startingNode, targetNode }))
             }
         })
@@ -58,22 +62,26 @@ class Graph {
 
     adjacent(key) {
         return [...this.edges.values()].reduce((acc, { startingNode, targetNode }) => {
-            if(startingNode.key === key) acc.push(targetNode)
+            if(startingNode === key) acc.push(targetNode)
            return acc
         }, [])
     }
 
     indegree(key) {
         return [...this.edges.values()].reduce((acc, { targetNode }) => {
-            if(targetNode.key === key) acc++
+            if(targetNode === key) {
+                acc++
+            }
            return acc
         }, 0)
     }
 
     outdegree(key) {
         return [...this.edges.values()].reduce((acc, { startingNode }) => {
-            if(startingNode.key === key) acc++
+            if(startingNode === key) acc++
            return acc
         }, 0)
     }
 }
+
+module.exports = { Graph }
