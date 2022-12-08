@@ -1,5 +1,5 @@
 /**
- * https://www.30secondsofcode.org/articles/s/js-data-structures-binary-tree
+ * @see https://www.30secondsofcode.org/articles/s/js-data-structures-binary-tree
  * @description A binary tree is a data structure consisting of a set of linked nodes that represent a hierarchical tree structure.
  */
 class BinaryTreeNode {
@@ -28,16 +28,16 @@ class BinaryTree {
   * preOrderTraversal (node = this.root) {
     yield node
     if (node.hasChildren) {
-      if (node.left) yield * this.preOrderTraversal(node.left)
-      if (node.right) yield * this.preOrderTraversal(node.right)
+    if (node.left) yield * this.preOrderTraversal(node.left)
+    if (node.right) yield * this.preOrderTraversal(node.right)
     }
   }
 
   * postOrderTraversal (node = this.root) {
-    if (node.hasChildren) {
+    // if (node.hasChildren) {
       if (node.left) yield * this.postOrderTraversal(node.left)
       if (node.right) yield * this.postOrderTraversal(node.right)
-    }
+    // }
     yield node
   }
 
@@ -47,23 +47,34 @@ class BinaryTree {
     if (node.right) yield * this.inOrderTraversal(node.right)
   }
 
-  insert (parentKey, childKey, childValue, { left, right } = { left: true, right: true }) {
+  insert (parentKey, childKey, childValue = childKey, { left, right } = { left: true, right: true }) {
     for (const node of this.preOrderTraversal()) {
       if (node.key === parentKey) {
+        const canInsertLeft = left && !node.left
+        const canInsertRight = right && !node.right
+        if (!canInsertLeft && !canInsertRight) return false
         const newNode = new BinaryTreeNode(childKey, childValue, node)
-        if (left && !node.left) { node.left = newNode }
-        if (right && !node.right) { node.right = newNode }
+        if (canInsertLeft) {
+          node.left = newNode
+          return true
+        }
+        if (canInsertRight) {
+          node.right = newNode
+          return true
+        }
       }
     }
     return false
   }
 
   remove (key) {
-    for (const node of this.preOrderTraversal()) {
-      if (node.key === key) {
-        if (node.left) node.left = null
-        if (node.right) node.right = null
-        node = null
+    for (let node of this.preOrderTraversal()) {
+      if (node.left.key === key) {
+        node.left = null
+        return true
+      }
+      if (node.right.key === key) {
+        node.right = null
         return true
       }
     }
@@ -78,3 +89,5 @@ class BinaryTree {
     }
   }
 }
+
+module.exports = { BinaryTree }

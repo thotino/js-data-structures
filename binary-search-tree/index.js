@@ -1,5 +1,5 @@
 /**
- * https://www.30secondsofcode.org/articles/s/js-data-structures-binary-search-tree
+ * @see https://www.30secondsofcode.org/articles/s/js-data-structures-binary-search-tree
  * @description A binary search tree is a data structure consisting of a set of ordered linked nodes that represent a hierarchical tree structure
  */
 class BinarySearchTreeNode {
@@ -74,3 +74,5 @@ class BinarySearchTree {
     }
   }
 }
+
+module.exports = { BinarySearchTree }

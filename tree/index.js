@@ -58,9 +58,8 @@ class Tree {
       const filtered = node.children.filter(child => (child.key !== key))
       if (filtered.length !== node.children.length) {
         node.children = filtered
-      return true 
+        return true
       }
-      
     }
     return false
   }
