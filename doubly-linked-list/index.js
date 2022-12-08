@@ -1,3 +1,8 @@
+/**
+ * @see https://www.30secondsofcode.org/articles/s/js-data-structures-doubly-linked-list
+ * @description A doubly linked list is a linear data structure that represents a collection of elements, where each element points both to the next and the previous one
+ */
+
 class DoublyLinkedList {
   constructor () {
     this.nodes = []
@@ -63,3 +68,5 @@ class DoublyLinkedList {
     yield * this.nodes
   }
 }
+
+module.exports = { DoublyLinkedList }

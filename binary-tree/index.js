@@ -28,15 +28,15 @@ class BinaryTree {
   * preOrderTraversal (node = this.root) {
     yield node
     if (node.hasChildren) {
-    if (node.left) yield * this.preOrderTraversal(node.left)
-    if (node.right) yield * this.preOrderTraversal(node.right)
+      if (node.left) yield * this.preOrderTraversal(node.left)
+      if (node.right) yield * this.preOrderTraversal(node.right)
     }
   }
 
   * postOrderTraversal (node = this.root) {
     // if (node.hasChildren) {
-      if (node.left) yield * this.postOrderTraversal(node.left)
-      if (node.right) yield * this.postOrderTraversal(node.right)
+    if (node.left) yield * this.postOrderTraversal(node.left)
+    if (node.right) yield * this.postOrderTraversal(node.right)
     // }
     yield node
   }
@@ -68,7 +68,7 @@ class BinaryTree {
   }
 
   remove (key) {
-    for (let node of this.preOrderTraversal()) {
+    for (const node of this.preOrderTraversal()) {
       if (node.left.key === key) {
         node.left = null
         return true
